@@ -1,6 +1,6 @@
 <?php
 
-use hal\fontawesome\FA;
+use anteo\fontawesome\FA;
 use yii\helpers\Html;
 
 ?>

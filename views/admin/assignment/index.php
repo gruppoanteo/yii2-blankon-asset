@@ -1,6 +1,6 @@
 <?php
 
-use hal\blankon\widgets\GridView;
+use anteo\blankon\widgets\GridView;
 use mdm\admin\models\searchs\Assignment;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -40,7 +40,7 @@ if (!empty($extraColumns)) {
     $columns = array_merge($columns, $extraColumns);
 }
 $columns[] = [
-    'class' => 'hal\blankon\widgets\ActionColumn',
+    'class' => 'anteo\blankon\widgets\ActionColumn',
     'template' => '{view}'
 ];
 

@@ -1,11 +1,11 @@
 <?php
-namespace hal\blankon;
+namespace anteo\blankon;
 
 use yii\web\AssetBundle;
 
 class BlankonAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/hal/yii2-blankon-asset/assets';
+    public $sourcePath = '@vendor/anteo/yii2-blankon-asset/assets';
 
     public $css = [
         //'admin/css/reset.css',
@@ -20,8 +20,8 @@ class BlankonAsset extends AssetBundle
     ];
     public $depends = [
         'yii\bootstrap\BootstrapPluginAsset',
-        'hal\fontawesome\AssetBundlePro',
-        'hal\blankon\PluginAsset',
+        'anteo\fontawesome\AssetBundlePro',
+        'anteo\blankon\PluginAsset',
     ];
 
     public $theme = 'default';

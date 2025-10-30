@@ -1,11 +1,11 @@
 <?php
-namespace hal\blankon;
+namespace anteo\blankon;
 
 use yii\web\AssetBundle;
 
 class IssueTrackerAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/hal/yii2-blankon-asset/assets';
+    public $sourcePath = '@vendor/anteo/yii2-blankon-asset/assets';
     
     public $css = [
         'admin/css/pages/project-issue-tracker.css',
@@ -13,6 +13,6 @@ class IssueTrackerAsset extends AssetBundle
     public $js = [
     ];
     public $depends = [
-        'hal\blankon\BlankonAsset',
+        'anteo\blankon\BlankonAsset',
     ];
 }

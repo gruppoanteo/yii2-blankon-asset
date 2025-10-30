@@ -1,5 +1,5 @@
 <?php
-namespace hal\blankon\widgets;
+namespace anteo\blankon\widgets;
 
 use yii\base\InvalidConfigException;
 use yii\bootstrap\Nav;
@@ -45,7 +45,7 @@ class SideNav extends \kartik\nav\NavX
      */
     public $dropdownIndicator = '<span class="arrow fa-angle-double-right"></span>';
     
-    public $dropdownClass = '\hal\blankon\widgets\DropdownX';
+    public $dropdownClass = '\anteo\blankon\widgets\DropdownX';
 
     /**
      * Initializes the widget.

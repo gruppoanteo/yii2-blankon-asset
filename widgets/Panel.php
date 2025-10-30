@@ -1,6 +1,6 @@
 <?php
 
-namespace hal\blankon\widgets;
+namespace anteo\blankon\widgets;
 
 use yii\base\Widget;
 use yii\bootstrap\BootstrapAsset;

@@ -1,6 +1,6 @@
 <?php
 
-use hal\blankon\widgets\GridView;
+use anteo\blankon\widgets\GridView;
 use yii\widgets\Pjax;
 use yii\helpers\Html;
 
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'name',
                 'label' => Yii::t('rbac-admin', 'Name'),
             ],
-            ['class' => 'hal\blankon\widgets\ActionColumn',],
+            ['class' => 'anteo\blankon\widgets\ActionColumn',],
         ],
     ]);
     Pjax::end();

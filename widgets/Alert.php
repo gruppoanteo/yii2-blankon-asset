@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace hal\blankon\widgets;
+namespace anteo\blankon\widgets;
 
 use yii\helpers\Html;
 

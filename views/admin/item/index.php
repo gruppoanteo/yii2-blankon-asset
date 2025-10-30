@@ -1,7 +1,7 @@
 <?php
 
 use mdm\admin\components\RouteRule;
-use hal\blankon\widgets\GridView;
+use anteo\blankon\widgets\GridView;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -42,7 +42,7 @@ unset($rules[RouteRule::RULE_NAME]);
                 'attribute' => 'description',
                 'label' => Yii::t('rbac-admin', 'Description'),
             ],
-            ['class' => 'hal\blankon\widgets\ActionColumn',],
+            ['class' => 'anteo\blankon\widgets\ActionColumn',],
         ],
     ])
     ?>

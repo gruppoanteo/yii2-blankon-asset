@@ -1,6 +1,6 @@
 <?php
 
-use hal\blankon\ErrorAsset;
+use anteo\blankon\ErrorAsset;
 use yii\helpers\Html;
 
 ErrorAsset::register($this);

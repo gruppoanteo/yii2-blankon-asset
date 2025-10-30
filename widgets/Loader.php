@@ -1,7 +1,7 @@
 <?php
-namespace hal\blankon\widgets;
+namespace anteo\blankon\widgets;
 
-use hal\blankon\BlankonAsset;
+use anteo\blankon\BlankonAsset;
 use yii\base\Widget;
 use yii\helpers\Html;
 

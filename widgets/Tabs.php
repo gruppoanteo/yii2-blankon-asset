@@ -1,6 +1,6 @@
 <?php
 
-namespace hal\blankon\widgets;
+namespace anteo\blankon\widgets;
 
 use yii\base\InvalidConfigException;
 use yii\bootstrap\Dropdown;
@@ -8,7 +8,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /**
- * <?= \hal\blankon\widgets\Tabs::widget([
+ * <?= \anteo\blankon\widgets\Tabs::widget([
  *   'panelOptions' => ['class' => 'panel-tab-double shadow'],
  *   'headerOptions' => ['class' => 'nav-border nav-border-top-success'],
  *   'items' => [
@@ -17,7 +17,7 @@ use yii\helpers\Html;
  *  ]
  * ]) ?> 
  *
- * <?= \hal\blankon\widgets\Tabs::widget([
+ * <?= \anteo\blankon\widgets\Tabs::widget([
  *   'encodeLabels' => false,
  *   'panelOptions' => ['class' => 'shadow'],
  *   'items' => [
@@ -26,7 +26,7 @@ use yii\helpers\Html;
  *   ]
  * ]) ?> 
  *
- * <?= \hal\blankon\widgets\Tabs::widget([
+ * <?= \anteo\blankon\widgets\Tabs::widget([
  *   'encodeLabels' => false,
  *   'panelOptions' => ['class' => 'shadow panel-tab-double'],
  *   'items' => [
@@ -35,7 +35,7 @@ use yii\helpers\Html;
  *   ]
  * ]) ?> 
  * 
- * <?= \hal\blankon\widgets\Tabs::widget([
+ * <?= \anteo\blankon\widgets\Tabs::widget([
  *   'encodeLabels' => false,
  *   'panelOptions' => [
  *       'class' => 'panel-tab-double panel-tab-vertical row no-margin mb-15 rounded shadow', 
@@ -48,7 +48,7 @@ use yii\helpers\Html;
  *   ]
  * ]) ?> 
  * 
- * <?= \hal\blankon\widgets\Tabs::widget([
+ * <?= \anteo\blankon\widgets\Tabs::widget([
  *   'encodeLabels' => false,
  *   'headerOptions' => ['class' => 'nav-border nav-border-left-success'],
  *   'panelOptions' => [

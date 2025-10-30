@@ -1,13 +1,13 @@
 <?php
 
-use hal\radius\controllers\NasController;
-use hal\radius\controllers\RadacctController;
-use hal\radius\controllers\RadcheckController;
-use hal\radius\controllers\RadgroupcheckController;
-use hal\radius\controllers\RadgroupreplyController;
-use hal\radius\controllers\RadreplyController;
-use hal\radius\controllers\RadusergroupController;
-use hal\radius\models\Nas;
+use anteo\radius\controllers\NasController;
+use anteo\radius\controllers\RadacctController;
+use anteo\radius\controllers\RadcheckController;
+use anteo\radius\controllers\RadgroupcheckController;
+use anteo\radius\controllers\RadgroupreplyController;
+use anteo\radius\controllers\RadreplyController;
+use anteo\radius\controllers\RadusergroupController;
+use anteo\radius\models\Nas;
 use yii\bootstrap\Nav;
 
 $navType = 'nav-' . $this->context->module->navType;

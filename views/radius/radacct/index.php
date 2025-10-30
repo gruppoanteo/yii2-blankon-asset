@@ -1,6 +1,6 @@
 <?php
 
-use hal\blankon\widgets\ActionColumn;
+use anteo\blankon\widgets\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 

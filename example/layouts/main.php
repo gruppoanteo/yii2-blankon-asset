@@ -1,7 +1,7 @@
 <?php
 
-use hal\blankon\BlankonAsset;
-use hal\fontawesome\FA;
+use anteo\blankon\BlankonAsset;
+use anteo\fontawesome\FA;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;

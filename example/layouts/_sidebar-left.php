@@ -1,6 +1,6 @@
 <?php
 
-use hal\blankon\widgets\SideNav;
+use anteo\blankon\widgets\SideNav;
 use yii\helpers\Url;
 ?>
 

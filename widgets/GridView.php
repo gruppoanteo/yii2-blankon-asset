@@ -1,5 +1,5 @@
 <?php
-namespace hal\blankon\widgets;
+namespace anteo\blankon\widgets;
 
 use yii\helpers\Html;
 

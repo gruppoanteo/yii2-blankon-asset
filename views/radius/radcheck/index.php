@@ -1,8 +1,8 @@
 <?php
 
-use hal\blankon\widgets\ActionColumn;
+use anteo\blankon\widgets\ActionColumn;
 use mdm\admin\components\Helper;
-use hal\blankon\widgets\GridView;
+use anteo\blankon\widgets\GridView;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 

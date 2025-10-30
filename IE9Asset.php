@@ -1,6 +1,6 @@
 <?php
 
-namespace hal\blankon;
+namespace anteo\blankon;
 
 use yii\web\AssetBundle;
 

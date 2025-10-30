@@ -1,5 +1,5 @@
 <?php
-namespace hal\blankon;
+namespace anteo\blankon;
 
 class PluginAsset extends \yii\web\AssetBundle
 {
@@ -17,7 +17,7 @@ class PluginAsset extends \yii\web\AssetBundle
     ];
     
     public $depends = [
-        'hal\blankon\IE9Asset',
+        'anteo\blankon\IE9Asset',
         'yii\web\JqueryAsset',
     ];
 }

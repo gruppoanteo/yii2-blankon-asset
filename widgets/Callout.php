@@ -1,6 +1,6 @@
 <?php
 
-namespace hal\blankon\widgets;
+namespace anteo\blankon\widgets;
 
 use yii\bootstrap\Alert;
 use yii\helpers\Html;

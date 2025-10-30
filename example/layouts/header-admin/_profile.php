@@ -1,7 +1,7 @@
 <?php
 
 use cebe\gravatar\Gravatar;
-use hal\fontawesome\FA;
+use anteo\fontawesome\FA;
 use yii\bootstrap\Dropdown;
 
 $identity = Yii::$app->user->identity;

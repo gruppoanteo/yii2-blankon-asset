@@ -1,7 +1,7 @@
 <?php
-namespace hal\blankon\widgets;
+namespace anteo\blankon\widgets;
 
-use hal\fontawesome\FA;
+use anteo\fontawesome\FA;
 use Yii;
 use yii\helpers\Html;
 

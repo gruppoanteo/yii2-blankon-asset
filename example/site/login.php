@@ -1,6 +1,6 @@
 <?php
 
-use hal\blankon\LoginAsset;
+use anteo\blankon\LoginAsset;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 

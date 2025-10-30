@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use hal\blankon\widgets\GridView;
+use anteo\blankon\widgets\GridView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'route',
             'order',
-            ['class' => 'hal\blankon\widgets\ActionColumn'],
+            ['class' => 'anteo\blankon\widgets\ActionColumn'],
         ],
     ]);
     Pjax::end();

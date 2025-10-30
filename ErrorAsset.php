@@ -1,9 +1,9 @@
 <?php
-namespace hal\blankon;
+namespace anteo\blankon;
 
 class ErrorAsset extends \yii\web\AssetBundle
 {
-    public $sourcePath = '@vendor/hal/yii2-blankon-asset/assets';
+    public $sourcePath = '@vendor/anteo/yii2-blankon-asset/assets';
     
     public $css = [
         'admin/css/pages/error-page.css'
@@ -13,6 +13,6 @@ class ErrorAsset extends \yii\web\AssetBundle
     ];
     
     public $depends = [
-        'hal\blankon\BlankonAsset',
+        'anteo\blankon\BlankonAsset',
     ];
 }

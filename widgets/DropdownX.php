@@ -6,7 +6,7 @@
  * @version 1.2.0
  */
 
-namespace hal\blankon\widgets;
+namespace anteo\blankon\widgets;
 
 use yii\base\InvalidConfigException;
 use yii\helpers\Html;
