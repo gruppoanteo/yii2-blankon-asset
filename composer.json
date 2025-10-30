@@ -1,0 +1,37 @@
+{
+    "name": "anteo/yii2-blankon-asset",
+    "description": "Blankon Assets Yii Framework 2.0",
+    "keywords": ["yii2", "extension", "blankon", "theme"],
+    "type": "yii2-extension",
+    "license": "BSD 3-Clause",
+    "authors": [
+        {
+            "name": "p3pp01",
+            "email": "pietro.bardone@gruppoanteo.it",
+            "homepage": "https://anteocoop.it"
+        }
+    ],
+    "require": {
+        "anteo/yii2-fontawesome": "*",
+        "yiisoft/yii2": "2.*",
+        "yiisoft/yii2-bootstrap": "2.*",
+        "cebe/yii2-gravatar": "1.*",
+        "kartik-v/yii2-widget-alert": "*",
+        "kartik-v/yii2-nav-x": "1.2.1",
+        "bower-asset/animate.css": "*",
+        "bower-asset/jquery.cookie" : "1.4.1",
+        "bower-asset/jquery.nicescroll" : "*",
+        "bower-asset/jquery.easing" : "*",
+        "bower-asset/html5shiv" : "*",
+        "bower-asset/respond" : "*"
+    },
+    "suggest": {
+        "mdmsoft/yii2-admin": "(ONLY ~2.0) if you want to admin rbac permissions",
+        "anteo/yii2-radius-module": "if you want to radius module"
+    },
+    "autoload": {
+        "psr-4": {
+            "anteo\\blankon\\": ""
+        }
+    }
+}
