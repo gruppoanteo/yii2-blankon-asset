@@ -103,7 +103,7 @@ class Tabs extends \yii\bootstrap\Tabs
         $headers = [];
         $panes = [];
 
-        if (!$this->hasActiveTab() && !empty($this->items)) {
+        if (!$this->hasActiveTab() && !empty($this->items) && isset($this->items[0])) {
             $this->items[0]['active'] = true;
         }
 

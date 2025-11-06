@@ -84,7 +84,7 @@ class Panel extends Widget
         echo $this->renderHeader() . "\n";
         if ($this->renderBody) {
             echo $this->renderBodyBegin() . "\n";
-            echo $this->body;
+            echo $this->body ?? '';
         }
     }
     
@@ -107,6 +107,8 @@ class Panel extends Widget
         if (!empty($actions)) {
             $tag = ArrayHelper::remove($this->actionOptions, 'tag', 'div');
             $actions = Html::tag($tag, implode("\n", $actions), $this->actionOptions);
+        } else {
+            $actions = '';
         }
         
         if (!isset($this->title) && $subtitle == '' && empty($actions)) {
@@ -114,7 +116,7 @@ class Panel extends Widget
         }
 
         $header = strtr($this->headerTemplate, [
-            '{title}' => $this->title,
+            '{title}' => $this->title ?? '',
             '{subtitle}' => $subtitle,
             '{actions}' => $actions
         ]) . Html::tag('div', '', ['class' => 'clearfix']);
