@@ -95,7 +95,7 @@ class Panel extends Widget
     protected function renderHeader()
     {
         $subtitle = ($this->subtitle != "") ? $this->subtitle : '';
-        $actions = '';
+        $actions = [];
         $itemOptions = ArrayHelper::remove($this->actionOptions, 'itemOptions', []);
         Html::addCssClass($itemOptions, ['widget' => 'btn btn-sm']);
         Html::addCssClass($this->actionOptions, ['widget' => 'pull-right']);
@@ -109,7 +109,7 @@ class Panel extends Widget
             $actions = Html::tag($tag, implode("\n", $actions), $this->actionOptions);
         }
         
-        if (!isset($this->title, $subtitle) && empty($actions)) {
+        if (!isset($this->title) && $subtitle == '' && empty($actions)) {
             return;
         }
 
