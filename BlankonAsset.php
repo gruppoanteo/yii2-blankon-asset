@@ -38,6 +38,7 @@ class BlankonAsset extends AssetBundle
     public $sourcePath = '@vendor/anteo/yii2-blankon-asset/assets';
 
     public $css = [
+        'admin/css/layout.css',
         'admin/css/components.css',
         'admin/css/plugins.css',
         'admin/css/yii-custom.css',
