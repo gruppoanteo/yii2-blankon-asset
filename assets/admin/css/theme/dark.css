@@ -1,0 +1,140 @@
+/* ============================================================================
+ * BLANKON THEME — DARK
+ * ----------------------------------------------------------------------------
+ * Palette dark moderna, neutra, ad alto contrasto. Pensata per uso prolungato
+ * (HR, contabilità, gestionale). Niente più "#373737 + #616060 sporchi".
+ *
+ * Riferimento contrasto: WCAG AA su tutti i pairs text/bg.
+ *
+ *   Scale neutre (cool gray / blue-gray):
+ *     bg          #0F1419
+ *     surface     #1A1F26      (panel, card, modal, header, sidebar-left bg)
+ *     surface-2   #222932      (header alt, sidebar-right)
+ *     surface-3   #2A323D      (hover su surface)
+ *     border      #2C333D
+ *     border-soft #232931
+ *
+ *   Foreground:
+ *     text        #E6E8EB
+ *     text-strong #F4F6F8
+ *     muted       #9AA3AD
+ *     soft        #6B7480
+ * ========================================================================== */
+
+html[data-theme="dark"] {
+    /* Surfaces */
+    --bk-bg:            #0f1419;
+    --bk-surface:       #1a1f26;
+    --bk-surface-2:     #222932;
+    --bk-surface-3:     #2a323d;
+    --bk-surface-alt:   #1f252d;
+
+    /* Sidebar left */
+    --bk-sidebar-bg:        #161b22;
+    --bk-sidebar-fg:        #e6e8eb;
+    --bk-sidebar-muted:     #9aa3ad;
+    --bk-sidebar-hover-bg:  #232931;
+    /* active-bg leggermente più tono accent rispetto al hover, per dare un
+       "pop" coerente col tema scuro (al posto del vecchio #3c3c3c piatto) */
+    --bk-sidebar-active-bg: rgba(0, 177, 225, 0.22);
+    --bk-sidebar-active-fg: #ffffff;
+    --bk-sidebar-submenu-bg:#13181e;
+    --bk-sidebar-icon-bg:   #2a323d;
+    --bk-sidebar-border:    #2c333d;
+
+    /* Header */
+    --bk-header-bg:    #1a1f26;
+    --bk-header-fg:    #e6e8eb;
+    --bk-header-muted: #9aa3ad;
+    --bk-header-border:#2c333d;
+
+    /* Text */
+    --bk-text:        #e6e8eb;
+    --bk-text-muted:  #9aa3ad;
+    --bk-text-soft:   #6b7480;
+    --bk-text-strong: #f4f6f8;
+    /* text-invert resta bianco: serve per testo su componenti colorati
+       (badge, button accent, alert) dove vogliamo SEMPRE alto contrasto
+       contro il colore di stato, indipendentemente dal tema. */
+    --bk-text-invert: #ffffff;
+
+    /* Borders */
+    --bk-border:        #2c333d;
+    --bk-border-strong: #3a424e;
+    --bk-border-soft:   #232931;
+    --bk-divider:       #2c333d;
+
+    /* Form */
+    --bk-input-disabled-bg: #232931;
+
+    /* Modal overlay */
+    --bk-modal-overlay: rgba(0, 0, 0, 0.7);
+
+    /* Panel shadow (più sottile sul dark) */
+    --bk-panel-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 2px 8px rgba(0, 0, 0, 0.4);
+
+    /* Code */
+    --bk-code-bg: #13181e;
+    --bk-code-fg: #ff8aa8;
+
+    /* Accent state-soft più morbidi sul dark per non bruciare */
+    --bk-accent-soft:  rgba(0, 177, 225, 0.18);
+    --bk-success-soft: rgba(140, 193, 82, 0.20);
+    --bk-warning-soft: rgba(246, 187, 66, 0.22);
+    --bk-danger-soft:  rgba(233, 87, 63, 0.20);
+    --bk-info-soft:    rgba(54, 198, 227, 0.20);
+
+    /* Scrollbar */
+    --bk-scrollbar-thumb: rgba(255, 255, 255, 0.18);
+
+    /* Logo dark */
+    --bk-logo-url: url('/images/logo_login_dark.png');
+
+    color-scheme: dark;
+}
+
+/* Quando l'utente sceglie "auto" e il sistema è in dark mode */
+@media (prefers-color-scheme: dark) {
+    html[data-theme="auto"] {
+        --bk-bg:            #0f1419;
+        --bk-surface:       #1a1f26;
+        --bk-surface-2:     #222932;
+        --bk-surface-3:     #2a323d;
+        --bk-surface-alt:   #1f252d;
+        --bk-sidebar-bg:        #161b22;
+        --bk-sidebar-fg:        #e6e8eb;
+        --bk-sidebar-muted:     #9aa3ad;
+        --bk-sidebar-hover-bg:  #232931;
+        --bk-sidebar-active-bg: #2a323d;
+        --bk-sidebar-active-fg: #ffffff;
+        --bk-sidebar-submenu-bg:#13181e;
+        --bk-sidebar-icon-bg:   #2a323d;
+        --bk-sidebar-border:    #2c333d;
+        --bk-header-bg:    #1a1f26;
+        --bk-header-fg:    #e6e8eb;
+        --bk-header-muted: #9aa3ad;
+        --bk-header-border:#2c333d;
+        --bk-text:        #e6e8eb;
+        --bk-text-muted:  #9aa3ad;
+        --bk-text-soft:   #6b7480;
+        --bk-text-strong: #f4f6f8;
+        --bk-text-invert: #1a1f26;
+        --bk-border:        #2c333d;
+        --bk-border-strong: #3a424e;
+        --bk-border-soft:   #232931;
+        --bk-divider:       #2c333d;
+        --bk-input-disabled-bg: #232931;
+        --bk-modal-overlay: rgba(0, 0, 0, 0.7);
+        --bk-panel-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 2px 8px rgba(0, 0, 0, 0.4);
+        --bk-code-bg: #13181e;
+        --bk-code-fg: #ff8aa8;
+        --bk-accent-soft:  rgba(0, 177, 225, 0.18);
+        --bk-success-soft: rgba(140, 193, 82, 0.20);
+        --bk-warning-soft: rgba(246, 187, 66, 0.22);
+        --bk-danger-soft:  rgba(233, 87, 63, 0.20);
+        --bk-info-soft:    rgba(54, 198, 227, 0.20);
+        --bk-scrollbar-thumb: rgba(255, 255, 255, 0.18);
+        --bk-logo-url: url('/images/logo_login_dark.png');
+        color-scheme: dark;
+    }
+}

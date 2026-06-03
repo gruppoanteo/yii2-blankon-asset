@@ -1,0 +1,788 @@
+/* ============================================================================
+ * BLANKON THEME — COVERAGE
+ * ----------------------------------------------------------------------------
+ * Applica i design tokens ai selettori DOM più comuni: pannelli, tabelle,
+ * form, tabs, dropdown, modali, breadcrumb, alert, footer, sidebar-right.
+ *
+ * Idempotente: queste regole leggono SOLO var(--bk-*). Sul tema light i token
+ * coincidono con i colori storici di Blankon, quindi il rendering non cambia.
+ * Sul tema dark, ereditando i token di dark.css, l'intero DOM diventa scuro.
+ *
+ * Importante: questo file deve essere caricato DOPO components.css/layout.css
+ * (così vince la cascata) e prima dei file accent (themes/<color>.theme.css).
+ * ========================================================================== */
+
+/* --- BODY / PAGE ---------------------------------------------------------- */
+body {
+    background-color: var(--bk-bg);
+    color: var(--bk-text);
+}
+
+a { color: var(--bk-link); }
+a:hover, a:focus { color: var(--bk-link-hover); }
+
+hr { border-top-color: var(--bk-border-soft); }
+
+/* --- HEADER --------------------------------------------------------------- */
+#header .navbar-header,
+#header .navbar-toolbar,
+.navbar-toolbar {
+    background-color: var(--bk-header-bg);
+    color: var(--bk-header-fg);
+    border-bottom-color: var(--bk-header-border);
+}
+
+#header .header-content,
+.header-content {
+    background-color: var(--bk-surface-alt);
+    border-bottom-color: var(--bk-header-border);
+}
+.header-content h2 { color: var(--bk-text-strong); }
+.header-content .breadcrumb-wrapper .breadcrumb li a       { color: var(--bk-breadcrumb-fg); }
+.header-content .breadcrumb-wrapper .breadcrumb li.active  { color: var(--bk-breadcrumb-active-fg); }
+.header-content .breadcrumb-wrapper .breadcrumb li span,
+.header-content .breadcrumb-wrapper .breadcrumb li i       { color: var(--bk-breadcrumb-sep); }
+
+/* --- SIDEBAR LEFT --------------------------------------------------------- */
+#sidebar-left,
+#sidebar-left:after,
+#sidebar-left .sidebar-content {
+    background-color: var(--bk-sidebar-bg);
+    color: var(--bk-sidebar-fg);
+}
+
+.sidebar-menu > li > a > span,
+.sidebar-menu > li > a > .text { color: var(--bk-sidebar-fg); }
+.sidebar-menu > li > a > .icon i { color: var(--bk-sidebar-fg); }
+
+.sidebar-light .sidebar-menu > li > a > .icon i { color: var(--bk-sidebar-muted); }
+
+.sidebar-box .sidebar-menu > li > a > .icon i,
+.sidebar-rounded .sidebar-menu > li > a > .icon i,
+.sidebar-circle .sidebar-menu > li > a > .icon i {
+    border-color: var(--bk-sidebar-icon-bg);
+    background-color: var(--bk-sidebar-icon-bg);
+}
+
+.sidebar-menu ul li a {
+    color: var(--bk-sidebar-fg);
+    background-color: var(--bk-sidebar-submenu-bg);
+}
+.sidebar-menu ul li a:hover,
+.sidebar-menu > li > ul > li > a:hover,
+.sidebar-menu > li > ul > li > ul > li > a:hover { background-color: var(--bk-sidebar-hover-bg); }
+.sidebar-menu ul li.active > a { background-color: var(--bk-sidebar-active-bg); color: var(--bk-sidebar-active-fg); }
+.sidebar-menu ul li:after { background-color: var(--bk-sidebar-border); }
+
+/* Il PARENT di un submenu attivo (es. "Professionisti" che contiene
+ * "Controllo" attivo) Blankon lo metteva a `#373737` (= sidebar dark bg)
+ * che ora tokenizzato è invisibile sul light. Tono distintivo via hover-bg. */
+.sidebar-menu > li > ul > li.active.submenu > a { background-color: var(--bk-sidebar-hover-bg); }
+
+/* Icona della voce attiva: il vendor `themes/<accent>.theme.css` mette
+ * `background-color: <accent>` all'.icon i della voce active (sui layout
+ * sidebar-box/rounded/circle). Sul light il colore icona ereditava da
+ * `--bk-sidebar-active-fg` (scuro) → contrasto pessimo. Forziamo a bianco
+ * su entrambi i temi: l'icona viaggia su bg accent pieno. */
+.sidebar-menu > li.active > a > .icon i,
+.sidebar-box .sidebar-menu > li.active > a > .icon i,
+.sidebar-rounded .sidebar-menu > li.active > a > .icon i,
+.sidebar-circle .sidebar-menu > li.active > a > .icon i { color: var(--bk-text-invert) !important; }
+
+/* --- SIDEBAR RIGHT -------------------------------------------------------- */
+#sidebar-right {
+    background-color: var(--bk-surface-2) !important; /* batte l'inline style:#fff dell'app */
+    color: var(--bk-text);
+    border-left: 1px solid var(--bk-border-soft);
+}
+#sidebar-right .panel,
+#sidebar-right .panel .panel-body { background-color: transparent; color: inherit; }
+#sidebar-right .media-list .media .media-body,
+#sidebar-right .media-list .media:last-child .media-body { color: var(--bk-text); }
+
+/* --- PAGE CONTENT --------------------------------------------------------- */
+#page-content,
+.body-content { background-color: var(--bk-bg); color: var(--bk-text); }
+
+/* --- PANEL / CARD ---------------------------------------------------------
+ * Header del panel: resta col colore originale della classe Bootstrap/Blankon
+ * (panel-default = #f5f5f5, panel-info = #63D3E9, panel-success = #8cc152, ...).
+ * Body e footer invece tokenizzati per adattarsi al tema (body bianco in
+ * light, scuro in dark; footer surface-alt). */
+.panel,
+.panel-default {
+    box-shadow: var(--bk-panel-shadow);
+    border-radius: var(--bk-panel-radius);
+    background-color: var(--bk-surface);
+}
+.panel .panel-heading,
+.panel-default > .panel-heading {
+    border-top-left-radius: var(--bk-panel-radius);
+    border-top-right-radius: var(--bk-panel-radius);
+}
+.panel .panel-body { background-color: var(--bk-surface); color: var(--bk-text); }
+.panel .panel-footer {
+    background-color: var(--bk-surface-alt);
+    color: var(--bk-text-muted);
+    border-top-color: var(--bk-border);
+}
+
+/* kartik GridView footer (.kv-table-footer): gradiente tokenizzato */
+.kv-table-footer {
+    background: linear-gradient(to top, var(--bk-surface) 0%, var(--bk-surface-alt) 100%);
+    color: var(--bk-text);
+}
+
+/* --- TABLE / GRIDVIEW ----------------------------------------------------- */
+.table { color: var(--bk-table-fg); background-color: var(--bk-table-bg); }
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th { color: var(--bk-table-header-fg); background-color: var(--bk-table-header-bg); border-bottom-color: var(--bk-table-border); border-color: var(--bk-table-border); }
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td { border-color: var(--bk-table-border); color: var(--bk-table-fg); }
+.table-striped > tbody > tr:nth-of-type(odd)  { background-color: var(--bk-table-row-stripe); }
+.table-hover  > tbody > tr:hover              { background-color: var(--bk-table-row-hover); }
+.table-bordered, .table-bordered > thead > tr > th, .table-bordered > tbody > tr > td { border-color: var(--bk-table-border); }
+
+/* kartik GridView quick fixes */
+.grid-view { color: var(--bk-text); }
+.grid-view .summary,
+.grid-view .empty,
+.grid-view .pagination > li > a,
+.grid-view .pagination > li > span { color: var(--bk-text); border-color: var(--bk-border-soft); }
+
+/* Bootstrap pagination: bg bianco hardcoded (#fff) — tokenizziamo così segue
+ * il tema su tutte le pagination del DOM, non solo dentro .grid-view. */
+.pagination > li > a,
+.pagination > li > span {
+    background-color: var(--bk-surface);
+    color: var(--bk-text);
+    border-color: var(--bk-border-soft);
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover { background-color: var(--bk-surface-3); color: var(--bk-text-strong); border-color: var(--bk-border); }
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover { background-color: var(--bk-accent); border-color: var(--bk-accent); color: var(--bk-accent-fg); }
+.pagination > .disabled > a,
+.pagination > .disabled > span,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > span:hover { background-color: var(--bk-surface); color: var(--bk-text-muted); border-color: var(--bk-border-soft); cursor: not-allowed; }
+.grid-view .pagination > .active > a,
+.grid-view .pagination > .active > span { background-color: var(--bk-accent); border-color: var(--bk-accent); color: var(--bk-accent-fg); }
+.grid-view .filters input,
+.grid-view .filters select { background-color: var(--bk-input-bg); color: var(--bk-input-fg); border-color: var(--bk-input-border); }
+
+/* --- FORMS ---------------------------------------------------------------- */
+.form-control,
+input.form-control,
+textarea.form-control,
+select.form-control {
+    background-color: var(--bk-input-bg);
+    color: var(--bk-input-fg);
+    border-color: var(--bk-input-border);
+}
+.form-control:focus {
+    border-color: var(--bk-input-border-focus);
+    box-shadow: 0 0 0 2px var(--bk-accent-soft);
+}
+.form-control::placeholder { color: var(--bk-input-placeholder); }
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control { background-color: var(--bk-input-disabled-bg); color: var(--bk-text-muted); }
+
+.control-label,
+label { color: var(--bk-label-fg); }
+.help-block { color: var(--bk-text-muted); }
+.input-group-addon { background-color: var(--bk-surface-alt); color: var(--bk-text-muted); border-color: var(--bk-input-border); }
+
+/* Select2 quick coverage (kartik) */
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+    background-color: var(--bk-input-bg);
+    border-color: var(--bk-input-border);
+    color: var(--bk-input-fg);
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered { color: var(--bk-input-fg); }
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    background-color: var(--bk-input-bg);
+    color: var(--bk-input-fg);
+    border-color: var(--bk-input-border);
+}
+.select2-dropdown {
+    background-color: var(--bk-dropdown-bg);
+    border-color: var(--bk-dropdown-border);
+    color: var(--bk-dropdown-fg);
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: var(--bk-accent);
+    color: var(--bk-accent-fg);
+}
+
+/* --- BUTTONS (solo defaults) --------------------------------------------- */
+.btn-default {
+    background-color: var(--bk-surface);
+    color: var(--bk-text);
+    border-color: var(--bk-border);
+}
+.btn-default:hover,
+.btn-default:focus { background-color: var(--bk-surface-3); border-color: var(--bk-border-strong); color: var(--bk-text); }
+
+/* --- TABS ----------------------------------------------------------------- */
+.nav-tabs { border-bottom-color: var(--bk-tab-border); }
+.nav-tabs > li > a { color: var(--bk-tab-fg); border-color: transparent; }
+.nav-tabs > li > a:hover { background-color: var(--bk-surface-3); border-color: transparent; }
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    background-color: var(--bk-tab-active-bg);
+    color: var(--bk-tab-active-fg);
+    border-color: var(--bk-tab-border);
+    border-bottom-color: transparent;
+}
+.tab-content { background-color: var(--bk-tab-active-bg); color: var(--bk-text); }
+
+/* --- DROPDOWN / POPOVER --------------------------------------------------- */
+.dropdown-menu {
+    background-color: var(--bk-dropdown-bg);
+    color: var(--bk-dropdown-fg);
+    border-color: var(--bk-dropdown-border);
+    box-shadow: var(--bk-dropdown-shadow);
+}
+.dropdown-menu > li > a { color: var(--bk-dropdown-fg); }
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus { background-color: var(--bk-dropdown-hover-bg); color: var(--bk-text-strong); }
+.dropdown-menu .divider { background-color: var(--bk-divider); }
+
+.popover {
+    background-color: var(--bk-dropdown-bg);
+    color: var(--bk-dropdown-fg);
+    border-color: var(--bk-dropdown-border);
+}
+.popover-title { background-color: var(--bk-surface-alt); color: var(--bk-text-strong); border-bottom-color: var(--bk-border-soft); }
+
+/* --- MODAL ---------------------------------------------------------------- */
+.modal-content {
+    background-color: var(--bk-modal-bg);
+    color: var(--bk-modal-fg);
+    border-color: var(--bk-modal-border);
+}
+.modal-header { border-bottom-color: var(--bk-border-soft); }
+.modal-footer { border-top-color: var(--bk-border-soft); }
+.modal-backdrop.in { background-color: var(--bk-modal-overlay); opacity: 1; }
+.modal-title { color: var(--bk-text-strong); }
+
+/* --- BREADCRUMB ----------------------------------------------------------- */
+.breadcrumb { background-color: var(--bk-breadcrumb-bg); }
+.breadcrumb > li         { color: var(--bk-breadcrumb-fg); }
+.breadcrumb > li > a     { color: var(--bk-breadcrumb-fg); }
+.breadcrumb > .active    { color: var(--bk-breadcrumb-active-fg); }
+
+/* --- ALERT (Bootstrap base) ---------------------------------------------- */
+.alert-success { background-color: var(--bk-success-soft); border-color: var(--bk-success); color: var(--bk-text-strong); }
+.alert-info    { background-color: var(--bk-info-soft);    border-color: var(--bk-info);    color: var(--bk-text-strong); }
+.alert-warning { background-color: var(--bk-warning-soft); border-color: var(--bk-warning); color: var(--bk-text-strong); }
+.alert-danger  { background-color: var(--bk-danger-soft);  border-color: var(--bk-danger);  color: var(--bk-text-strong); }
+
+/* --- FOOTER --------------------------------------------------------------- */
+#footer,
+.footer,
+.sidebar-footer {
+    background-color: var(--bk-footer-bg);
+    color: var(--bk-footer-fg);
+    border-top-color: var(--bk-footer-border);
+}
+#footer a, .footer a, .sidebar-footer a { color: var(--bk-accent); }
+#footer a:hover, .footer a:hover, .sidebar-footer a:hover { color: var(--bk-accent-hover); }
+
+/* --- CODE / PRE ----------------------------------------------------------- */
+code { background-color: var(--bk-code-bg); color: var(--bk-code-fg); }
+pre  { background-color: var(--bk-code-bg); color: var(--bk-text); border-color: var(--bk-border-soft); }
+
+/* --- LIST GROUP ----------------------------------------------------------- */
+.list-group { background-color: transparent; }
+.list-group-item {
+    background-color: var(--bk-surface);
+    color: var(--bk-text);
+    border-color: var(--bk-border-soft);
+}
+.list-group-item:hover { background-color: var(--bk-surface-3); }
+
+/* --- WELL / JUMBOTRON ---------------------------------------------------- */
+.well, .jumbotron {
+    background-color: var(--bk-surface-alt);
+    color: var(--bk-text);
+    border-color: var(--bk-border-soft);
+}
+
+/* --- LABEL / BADGE (solo neutri) ----------------------------------------- */
+.label-default { background-color: var(--bk-surface-3); color: var(--bk-text); }
+.badge         { background-color: var(--bk-surface-3); color: var(--bk-text); }
+
+/* --- SCROLLBAR (webkit) -------------------------------------------------- */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bk-scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--bk-scrollbar-thumb); border-radius: 6px; }
+
+/* --- THEME TOGGLE (icona nell'header) ------------------------------------ */
+#theme-toggle-container,
+[data-bk-theme-toggle] { color: var(--bk-accent); cursor: pointer; }
+#theme-toggle-container:hover,
+[data-bk-theme-toggle]:hover { color: var(--bk-accent-hover); }
+
+/* Icone doppie sole/luna: mostra quella giusta in base al tema */
+.bk-icon-light, .bk-icon-dark { display: none; }
+html[data-theme="light"] .bk-icon-light { display: inline-block; }
+html[data-theme="dark"]  .bk-icon-dark  { display: inline-block; }
+html[data-theme="auto"]  .bk-icon-light { display: inline-block; }
+@media (prefers-color-scheme: dark) {
+    html[data-theme="auto"] .bk-icon-light { display: none; }
+    html[data-theme="auto"] .bk-icon-dark  { display: inline-block; }
+}
+
+/* Logo swap: gestito lato JS in theme-toggle.js leggendo gli attributi
+   data-bk-logo-light / data-bk-logo-dark dell'<img>. CSS `content: url(...)`
+   non è affidabile su tutti i browser per gli <img>. */
+
+/* ============================================================================
+ * DARK ENFORCEMENT
+ * ----------------------------------------------------------------------------
+ * Le 33 varianti `themes/<accent>.theme.css` impongono `#header .navbar-header`
+ * al colore d'accento (corretto su light) e parti dell'app `blankon_layout.css`
+ * o legacy custom.css usano `background: white !important` sull'header/footer.
+ * Sotto `html[data-theme="dark"]` boostiamo la specificità (e usiamo !important
+ * dove necessario) per garantire che il dark vinca SEMPRE, senza dipendere
+ * dall'ordine di caricamento dei CSS legacy del consumer.
+ *
+ * Quando in FASE 3 i file vendor saranno fully-tokenized, questa sezione
+ * potrà essere ridotta o rimossa.
+ * ========================================================================== */
+
+html[data-theme="dark"] #header,
+html[data-theme="dark"] #header .navbar-header,
+html[data-theme="dark"] #header .navbar-toolbar,
+html[data-theme="dark"] .navbar-toolbar {
+    background-color: var(--bk-header-bg) !important;
+    color: var(--bk-header-fg);
+    border-color: var(--bk-header-border);
+}
+
+html[data-theme="dark"] #header .navbar-header .navbar-brand,
+html[data-theme="dark"] #header .navbar-header .navbar-brand .logo {
+    background-color: transparent;
+}
+
+html[data-theme="dark"] .header-content,
+html[data-theme="dark"] #page-content .header-content {
+    /* Allineato al bg del navbar così non si vede il gradino-banda chiara
+       tra header e header-content. */
+    background-color: var(--bk-header-bg) !important;
+    color: var(--bk-text);
+    border-bottom-color: var(--bk-border-soft) !important;
+}
+html[data-theme="dark"] .header-content h2 { color: var(--bk-text-strong); }
+
+/* La linea sotto il navbar (:before del .header-right .navbar-toolbar) sul
+   dark non serve e dà l'effetto "linea bianca": la nascondo. */
+html[data-theme="dark"] .header-right .navbar-toolbar:before { border-bottom-color: transparent !important; }
+
+html[data-theme="dark"] .navbar-toolbar .navbar-form input,
+html[data-theme="dark"] .navbar-toolbar .navbar-form .form-control,
+html[data-theme="dark"] .navbar-toolbar .navbar-search input {
+    background-color: var(--bk-input-bg) !important;
+    color: var(--bk-input-fg) !important;
+    border-color: var(--bk-input-border) !important;
+}
+html[data-theme="dark"] .navbar-toolbar .navbar-form input::placeholder { color: var(--bk-input-placeholder); }
+
+html[data-theme="dark"] .navbar-toolbar .navbar-right .dropdown > a,
+html[data-theme="dark"] .navbar-toolbar .navbar-left  .dropdown > a,
+html[data-theme="dark"] .navbar-toolbar .navbar-right > li > a,
+html[data-theme="dark"] .navbar-toolbar .navbar-left  > li > a { color: var(--bk-header-fg); }
+html[data-theme="dark"] .navbar-toolbar .navbar-right .dropdown > a:hover,
+html[data-theme="dark"] .navbar-toolbar .navbar-right .dropdown > a:focus,
+html[data-theme="dark"] .navbar-toolbar .navbar-left  .dropdown > a:hover,
+html[data-theme="dark"] .navbar-toolbar .navbar-left  .dropdown > a:focus { background-color: var(--bk-surface-3); color: var(--bk-text-strong); }
+
+/* User profile / dropdowns nel navbar */
+html[data-theme="dark"] .navbar-toolbar .navbar-profile > a,
+html[data-theme="dark"] .navbar-toolbar .navbar-profile > a span { color: var(--bk-header-fg); }
+html[data-theme="dark"] .navbar-toolbar .navbar-setting a,
+html[data-theme="dark"] .navbar-toolbar .navbar-setting a:hover { color: var(--bk-header-fg); background-color: transparent; }
+
+/* Minimize button (apre/chiude sidebar) */
+html[data-theme="dark"] .navbar-minimize a,
+html[data-theme="dark"] .navbar-minimize > a,
+html[data-theme="dark"] .navbar-minimize-mobile { color: var(--bk-header-fg); background-color: transparent; }
+
+/* Footer */
+html[data-theme="dark"] #footer,
+html[data-theme="dark"] .footer,
+html[data-theme="dark"] .footer-content {
+    background-color: var(--bk-footer-bg) !important;
+    color: var(--bk-footer-fg) !important;
+    border-top-color: var(--bk-footer-border) !important;
+    border-bottom-color: var(--bk-footer-border) !important;
+}
+html[data-theme="dark"] .footer-content { padding: 8px 11px; font-size: 12px; }
+html[data-theme="dark"] .sidebar-footer { background-color: var(--bk-sidebar-bg) !important; color: var(--bk-sidebar-muted); }
+html[data-theme="dark"] .sidebar-footer a { color: var(--bk-accent); }
+
+/* Bordi separatori del navbar e icone minimize */
+html[data-theme="dark"] .navbar-toolbar .navbar-left .navbar-minimize { border-right-color: var(--bk-header-border); }
+html[data-theme="dark"] .navbar-toolbar .navbar-left .navbar-search .trigger-search { color: var(--bk-text-muted); }
+
+/* Search box laterale (lente di ricerca grande in alto) */
+html[data-theme="dark"] .navbar-search,
+html[data-theme="dark"] .navbar-search .form-control { background-color: var(--bk-input-bg); color: var(--bk-input-fg); border-color: var(--bk-input-border); }
+
+/* ---------------------------------------------------------------------------
+ * DARK ENFORCEMENT — bordi
+ * Bootstrap/Blankon usa ovunque border-color #ddd / #eee / white hardcoded.
+ * Nel dark questi diventano linee chiare aggressive che "tagliano" il layout.
+ * Forziamo ogni bordo all'unico token --bk-border (#2c333d).
+ * ------------------------------------------------------------------------- */
+/* Border interni (separatori heading/body/footer) restano border-soft;
+ * il bordo ESTERNO del .panel resta accent (regola light+dark sopra). */
+html[data-theme="dark"] .panel-heading,
+html[data-theme="dark"] .panel-default > .panel-heading { border-bottom-color: var(--bk-border-soft) !important; }
+html[data-theme="dark"] .panel-footer { border-top-color: var(--bk-border-soft) !important; }
+
+html[data-theme="dark"] .table,
+html[data-theme="dark"] .table > thead > tr > th,
+html[data-theme="dark"] .table > tbody > tr > th,
+html[data-theme="dark"] .table > tfoot > tr > th,
+html[data-theme="dark"] .table > thead > tr > td,
+html[data-theme="dark"] .table > tbody > tr > td,
+html[data-theme="dark"] .table > tfoot > tr > td,
+html[data-theme="dark"] .table-bordered,
+html[data-theme="dark"] .table-bordered > thead > tr > th,
+html[data-theme="dark"] .table-bordered > tbody > tr > th,
+html[data-theme="dark"] .table-bordered > tfoot > tr > th,
+html[data-theme="dark"] .table-bordered > thead > tr > td,
+html[data-theme="dark"] .table-bordered > tbody > tr > td,
+html[data-theme="dark"] .table-bordered > tfoot > tr > td { border-color: var(--bk-border) !important; }
+
+html[data-theme="dark"] hr,
+html[data-theme="dark"] .divider,
+html[data-theme="dark"] .dropdown-menu .divider { border-color: var(--bk-border-soft) !important; background-color: var(--bk-border-soft) !important; }
+
+html[data-theme="dark"] .nav-tabs,
+html[data-theme="dark"] .nav-tabs > li > a,
+html[data-theme="dark"] .nav-tabs > li.active > a,
+html[data-theme="dark"] .nav-tabs > li.active > a:hover,
+html[data-theme="dark"] .nav-tabs > li.active > a:focus { border-color: var(--bk-border) !important; }
+html[data-theme="dark"] .nav-tabs > li.active > a,
+html[data-theme="dark"] .nav-tabs > li.active > a:hover,
+html[data-theme="dark"] .nav-tabs > li.active > a:focus { border-bottom-color: transparent !important; }
+
+html[data-theme="dark"] .form-control,
+html[data-theme="dark"] .input-group-addon,
+html[data-theme="dark"] .input-group-btn > .btn { border-color: var(--bk-input-border) !important; }
+
+html[data-theme="dark"] .breadcrumb-wrapper,
+html[data-theme="dark"] .breadcrumb { border-color: var(--bk-border-soft) !important; }
+
+html[data-theme="dark"] #sidebar-left,
+html[data-theme="dark"] #sidebar-right { border-color: var(--bk-border) !important; }
+
+/* ---------------------------------------------------------------------------
+ * DARK ENFORCEMENT — Bootstrap row state (success/danger/info/warning)
+ * Le classi `tr.success`, `tr.danger`, ecc. in Bootstrap hanno background
+ * pastello chiaro (#dff0d8, #f2dede, ...). Nel dark vanno mappati alle
+ * varianti "soft" dei token di stato per restare leggibili.
+ * ------------------------------------------------------------------------- */
+html[data-theme="dark"] .table > tbody > tr.success > td,
+html[data-theme="dark"] .table > tbody > tr.success > th,
+html[data-theme="dark"] .table > tbody > tr > td.success,
+html[data-theme="dark"] .table > tbody > tr > th.success { background-color: var(--bk-success-soft) !important; color: var(--bk-text) !important; }
+
+html[data-theme="dark"] .table > tbody > tr.info > td,
+html[data-theme="dark"] .table > tbody > tr.info > th,
+html[data-theme="dark"] .table > tbody > tr > td.info,
+html[data-theme="dark"] .table > tbody > tr > th.info { background-color: var(--bk-info-soft) !important; color: var(--bk-text) !important; }
+
+html[data-theme="dark"] .table > tbody > tr.warning > td,
+html[data-theme="dark"] .table > tbody > tr.warning > th,
+html[data-theme="dark"] .table > tbody > tr > td.warning,
+html[data-theme="dark"] .table > tbody > tr > th.warning { background-color: var(--bk-warning-soft) !important; color: var(--bk-text) !important; }
+
+html[data-theme="dark"] .table > tbody > tr.danger > td,
+html[data-theme="dark"] .table > tbody > tr.danger > th,
+html[data-theme="dark"] .table > tbody > tr > td.danger,
+html[data-theme="dark"] .table > tbody > tr > th.danger { background-color: var(--bk-danger-soft) !important; color: var(--bk-text) !important; }
+
+html[data-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd)  { background-color: var(--bk-table-row-stripe) !important; }
+html[data-theme="dark"] .table-hover   > tbody > tr:hover             { background-color: var(--bk-table-row-hover) !important; }
+
+/* Testo dei TD/TH della table: Bootstrap eredita `color: #2a2a2a` (o simile)
+ * via componente, e Blankon non lo cambia. Sul dark vanno forzati al
+ * --bk-text per evitare l'effetto "ghost" (testo scuro su sfondo scuro).
+ * Copertura aggressiva con `*` per battere eventuali span/strong/em
+ * con colori hardcoded del tema chiaro. */
+html[data-theme="dark"] .table > thead > tr > th,
+html[data-theme="dark"] .table > tbody > tr > th,
+html[data-theme="dark"] .table > thead > tr > td,
+html[data-theme="dark"] .table > tbody > tr > td,
+html[data-theme="dark"] .table > tfoot > tr > th,
+html[data-theme="dark"] .table > tfoot > tr > td,
+html[data-theme="dark"] .grid-view td,
+html[data-theme="dark"] .grid-view th { color: var(--bk-text) !important; }
+html[data-theme="dark"] .table > tbody > tr > td *:not(a):not(.btn):not(.label):not(.badge):not([class*="text-"]),
+html[data-theme="dark"] .grid-view td *:not(a):not(.btn):not(.label):not(.badge):not([class*="text-"]) {
+    color: inherit !important;
+}
+html[data-theme="dark"] .table > tbody > tr > td a:not(.btn):not(.label):not(.badge),
+html[data-theme="dark"] .grid-view td a:not(.btn):not(.label):not(.badge) { color: var(--bk-accent); }
+html[data-theme="dark"] .table > tbody > tr > td a:not(.btn):not(.label):not(.badge):hover,
+html[data-theme="dark"] .grid-view td a:not(.btn):not(.label):not(.badge):hover { color: var(--bk-accent-hover); }
+
+/* Bootstrap `.text-muted` su td/td-child è grigio scuro hardcoded → fixato */
+html[data-theme="dark"] .table .text-muted,
+html[data-theme="dark"] .grid-view .text-muted { color: var(--bk-text-muted) !important; }
+
+/* ---------------------------------------------------------------------------
+ * DARK ENFORCEMENT — Select2 (kartik widget, dropdown white di default)
+ * ------------------------------------------------------------------------- */
+html[data-theme="dark"] .select2-container--default .select2-selection--single,
+html[data-theme="dark"] .select2-container--default .select2-selection--multiple,
+html[data-theme="dark"] .select2-container--krajee .select2-selection--single,
+html[data-theme="dark"] .select2-container--krajee .select2-selection--multiple {
+    background-color: var(--bk-input-bg) !important;
+    border-color: var(--bk-input-border) !important;
+    color: var(--bk-input-fg) !important;
+}
+html[data-theme="dark"] .select2-container--default .select2-selection__rendered,
+html[data-theme="dark"] .select2-container--default .select2-selection__placeholder,
+html[data-theme="dark"] .select2-container--krajee .select2-selection__rendered,
+html[data-theme="dark"] .select2-container--krajee .select2-selection__placeholder { color: var(--bk-input-fg) !important; }
+html[data-theme="dark"] .select2-container--default .select2-selection__placeholder,
+html[data-theme="dark"] .select2-container--krajee .select2-selection__placeholder { color: var(--bk-input-placeholder) !important; }
+
+html[data-theme="dark"] .select2-dropdown,
+html[data-theme="dark"] .select2-dropdown--above,
+html[data-theme="dark"] .select2-dropdown--below {
+    background-color: var(--bk-dropdown-bg) !important;
+    color: var(--bk-dropdown-fg) !important;
+    border-color: var(--bk-dropdown-border) !important;
+}
+html[data-theme="dark"] .select2-results__option { color: var(--bk-dropdown-fg) !important; background-color: transparent !important; }
+html[data-theme="dark"] .select2-container--default .select2-results__option[aria-selected=true],
+html[data-theme="dark"] .select2-container--krajee .select2-results__option[aria-selected=true] { background-color: var(--bk-surface-3) !important; }
+html[data-theme="dark"] .select2-container--default .select2-results__option--highlighted[aria-selected],
+html[data-theme="dark"] .select2-container--krajee .select2-results__option--highlighted[aria-selected] {
+    background-color: var(--bk-accent) !important;
+    color: var(--bk-accent-fg) !important;
+}
+html[data-theme="dark"] .select2-container--default .select2-search--dropdown .select2-search__field,
+html[data-theme="dark"] .select2-container--krajee .select2-search--dropdown .select2-search__field {
+    background-color: var(--bk-input-bg) !important;
+    color: var(--bk-input-fg) !important;
+    border-color: var(--bk-input-border) !important;
+}
+html[data-theme="dark"] .select2-container--default .select2-selection__choice,
+html[data-theme="dark"] .select2-container--krajee .select2-selection__choice {
+    background-color: var(--bk-surface-3) !important;
+    border-color: var(--bk-border) !important;
+    color: var(--bk-text) !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * DARK ENFORCEMENT — dropdown-menu del navbar (es. "Selezionare l'azienda")
+ * Bootstrap default .dropdown-menu = white. Già coperto nel coverage base,
+ * ma alcuni temi vendor sovrascrivono con specificity più alta.
+ * ------------------------------------------------------------------------- */
+html[data-theme="dark"] .navbar-toolbar .dropdown-menu,
+html[data-theme="dark"] .navbar .dropdown-menu,
+html[data-theme="dark"] #header .dropdown-menu,
+html[data-theme="dark"] .dropdown-menu {
+    background-color: var(--bk-dropdown-bg) !important;
+    color: var(--bk-dropdown-fg) !important;
+    border-color: var(--bk-dropdown-border) !important;
+}
+html[data-theme="dark"] .navbar-toolbar .dropdown-menu > li > a,
+html[data-theme="dark"] .navbar .dropdown-menu > li > a,
+html[data-theme="dark"] #header .dropdown-menu > li > a,
+html[data-theme="dark"] .dropdown-menu > li > a { color: var(--bk-dropdown-fg) !important; background-color: transparent !important; }
+html[data-theme="dark"] .navbar-toolbar .dropdown-menu > li > a:hover,
+html[data-theme="dark"] .navbar-toolbar .dropdown-menu > li > a:focus,
+html[data-theme="dark"] .navbar .dropdown-menu > li > a:hover,
+html[data-theme="dark"] #header .dropdown-menu > li > a:hover,
+html[data-theme="dark"] .dropdown-menu > li > a:hover,
+html[data-theme="dark"] .dropdown-menu > li > a:focus { background-color: var(--bk-dropdown-hover-bg) !important; color: var(--bk-text-strong) !important; }
+/* Header del dropdown (es. "Selezionare l'azienda") */
+html[data-theme="dark"] .dropdown-menu .dropdown-header { color: var(--bk-text-muted) !important; background-color: var(--bk-surface-alt) !important; }
+
+/* ---------------------------------------------------------------------------
+ * DARK ENFORCEMENT — Panel di stato (info/warning/success/danger/primary)
+ * I bg dei panel-heading dei `.panel-info`, `.panel-warning` ecc. usano
+ * colori accent vivaci tipici di Blankon (#63D3E9, #F6BB42, ...).
+ * Sul dark vanno ammorbiditi al "soft" relativo allo stato per non bruciare.
+ * Il panel-body resta surface scuro.
+ * ------------------------------------------------------------------------- */
+html[data-theme="dark"] .panel-info > .panel-heading {
+    background-color: var(--bk-info) !important; border-color: var(--bk-info) !important; color: var(--bk-text-invert) !important;
+}
+html[data-theme="dark"] .panel-success > .panel-heading {
+    background-color: var(--bk-success) !important; border-color: var(--bk-success) !important; color: var(--bk-text-invert) !important;
+}
+html[data-theme="dark"] .panel-warning > .panel-heading {
+    background-color: var(--bk-warning) !important; border-color: var(--bk-warning) !important; color: var(--bk-text-invert) !important;
+}
+html[data-theme="dark"] .panel-danger > .panel-heading {
+    background-color: var(--bk-danger) !important; border-color: var(--bk-danger) !important; color: var(--bk-text-invert) !important;
+}
+html[data-theme="dark"] .panel-primary > .panel-heading {
+    background-color: var(--bk-accent) !important; border-color: var(--bk-accent) !important; color: var(--bk-accent-fg) !important;
+}
+/* panel-bg-* è la variante "tutto colorato" - body con bg state */
+html[data-theme="dark"] .panel-bg-info .panel-body    { background-color: var(--bk-info-soft) !important; color: var(--bk-text) !important; }
+html[data-theme="dark"] .panel-bg-success .panel-body { background-color: var(--bk-success-soft) !important; color: var(--bk-text) !important; }
+html[data-theme="dark"] .panel-bg-warning .panel-body { background-color: var(--bk-warning-soft) !important; color: var(--bk-text) !important; }
+html[data-theme="dark"] .panel-bg-danger .panel-body  { background-color: var(--bk-danger-soft) !important; color: var(--bk-text) !important; }
+html[data-theme="dark"] .panel-bg-info .panel-body .text-muted,
+html[data-theme="dark"] .panel-bg-success .panel-body .text-muted,
+html[data-theme="dark"] .panel-bg-warning .panel-body .text-muted,
+html[data-theme="dark"] .panel-bg-danger .panel-body .text-muted { color: var(--bk-text-muted) !important; }
+
+/* ---------------------------------------------------------------------------
+ * DARK ENFORCEMENT — Alert (Bootstrap + alert-default + callout)
+ * Le varianti state hanno colori vivaci che vanno softati sul dark.
+ * `.alert-default` / `.alert` base nudo era bianco/grigio chiaro: deve
+ * diventare surface scuro per integrarsi col tema.
+ * ------------------------------------------------------------------------- */
+html[data-theme="dark"] .alert,
+html[data-theme="dark"] .alert-default {
+    background-color: var(--bk-surface-alt) !important;
+    color: var(--bk-text) !important;
+    border-color: var(--bk-border) !important;
+}
+html[data-theme="dark"] .alert-success { background-color: var(--bk-success-soft) !important; color: var(--bk-text) !important; border-color: var(--bk-success) !important; }
+html[data-theme="dark"] .alert-info    { background-color: var(--bk-info-soft) !important;    color: var(--bk-text) !important; border-color: var(--bk-info) !important; }
+html[data-theme="dark"] .alert-warning { background-color: var(--bk-warning-soft) !important; color: var(--bk-text) !important; border-color: var(--bk-warning) !important; }
+html[data-theme="dark"] .alert-danger,
+html[data-theme="dark"] .alert-error   { background-color: var(--bk-danger-soft) !important;  color: var(--bk-text) !important; border-color: var(--bk-danger) !important; }
+html[data-theme="dark"] .alert a,
+html[data-theme="dark"] .alert .alert-link { color: var(--bk-accent); }
+html[data-theme="dark"] .alert .close,
+html[data-theme="dark"] .alert button.close { color: var(--bk-text-muted); opacity: 0.8; }
+
+/* Callout (alcuni temi Blankon) */
+html[data-theme="dark"] .callout,
+html[data-theme="dark"] .callout-default {
+    background-color: var(--bk-surface-alt) !important;
+    color: var(--bk-text) !important;
+    border-color: var(--bk-border) !important;
+}
+html[data-theme="dark"] .callout-info    { background-color: var(--bk-info-soft) !important;    border-left-color: var(--bk-info) !important;    color: var(--bk-text) !important; }
+html[data-theme="dark"] .callout-success { background-color: var(--bk-success-soft) !important; border-left-color: var(--bk-success) !important; color: var(--bk-text) !important; }
+html[data-theme="dark"] .callout-warning { background-color: var(--bk-warning-soft) !important; border-left-color: var(--bk-warning) !important; color: var(--bk-text) !important; }
+html[data-theme="dark"] .callout-danger  { background-color: var(--bk-danger-soft) !important;  border-left-color: var(--bk-danger) !important;  color: var(--bk-text) !important; }
+
+/* Panel: lasciamo i default (border-color via var(--bk-panel-border) nella
+ * coverage base, accent del panel-heading via classi del vendor themes). */
+
+/* ---------------------------------------------------------------------------
+ * DARK ENFORCEMENT — Login page (sign-wrapper, sign-header, sign-body)
+ * sign.css ha `#sign-wrapper form { background: #FFFFFF }` (ora tokenizzato
+ * a --bk-surface) e regole fisse su .sign-* in white. Sul dark vanno
+ * sovrascritte per coerenza col tema.
+ * ------------------------------------------------------------------------- */
+/* #sign-wrapper esterno SENZA bg override (così resta trasparente sul layout
+ * a colonne row-login / col-full-height del progetto). Bg solo sul form. */
+html[data-theme="dark"] #sign-wrapper form {
+    background-color: var(--bk-surface) !important;
+    color: var(--bk-text) !important;
+}
+html[data-theme="dark"] #sign-wrapper .sign-header,
+html[data-theme="dark"] #sign-wrapper .sign-text {
+    background-color: transparent !important;
+    color: var(--bk-text) !important;
+}
+/* Il vendor `themes/<accent>.theme.css` setta `.sign-text span { background:
+ * <accent> }` (tag colorato attorno al titolo "Benvenuto"). Sul dark
+ * neutralizziamo bg e usiamo --bk-text per il testo. */
+html[data-theme="dark"] #sign-wrapper .sign-text span,
+html[data-theme="dark"] .sign-text span {
+    background-color: transparent !important;
+    color: var(--bk-text-strong) !important;
+}
+html[data-theme="dark"] #sign-wrapper .sign-header span,
+html[data-theme="dark"] #sign-wrapper .sign-header p,
+html[data-theme="dark"] #sign-wrapper .sign-header strong { color: var(--bk-text-strong) !important; }
+
+/* I vendor themes/<accent>.theme.css mettono `.sign-text img { border: 7px
+ * solid <accent> }` (riquadro accent attorno al logo) che dà l'effetto
+ * "cornice azzurra" attorno al logo. Lo neutralizziamo su entrambi i temi
+ * e limitiamo la dimensione del logo (specie sul logo_dark di dim diversa). */
+.sign-text img,
+#sign-wrapper .sign-text img {
+    border: 0 !important;
+    max-width: 40px;
+    max-height: 140px;
+    width: auto;
+    height: auto;
+}
+
+/* Login theme toggle (icona sole/luna in alto a sx della pagina login) */
+#login-theme-toggle {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 1000;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--bk-surface);
+    color: var(--bk-accent);
+    border: 1px solid var(--bk-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--bk-shadow-2);
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+#login-theme-toggle:hover {
+    color: var(--bk-accent-hover);
+    background-color: var(--bk-surface-alt);
+}
+html[data-theme="dark"] #sign-wrapper .sign-body { background-color: var(--bk-surface) !important; }
+html[data-theme="dark"] #sign-wrapper .sign-footer { background-color: var(--bk-surface) !important; color: var(--bk-text) !important; }
+html[data-theme="dark"] #sign-wrapper .sign-body .form-group { background-color: transparent !important; }
+html[data-theme="dark"] #sign-wrapper input,
+html[data-theme="dark"] #sign-wrapper .form-control {
+    background-color: var(--bk-input-bg) !important;
+    color: var(--bk-input-fg) !important;
+    border-color: var(--bk-input-border) !important;
+}
+html[data-theme="dark"] #sign-wrapper input::placeholder { color: var(--bk-input-placeholder); }
+html[data-theme="dark"] #sign-wrapper .input-group-addon {
+    background-color: var(--bk-surface-alt) !important;
+    color: var(--bk-text-muted) !important;
+    border-color: var(--bk-input-border) !important;
+}
+html[data-theme="dark"] #sign-wrapper hr { border-color: var(--bk-border-soft) !important; }
+html[data-theme="dark"] #sign-wrapper a { color: var(--bk-accent); }
+html[data-theme="dark"] #sign-wrapper a:hover { color: var(--bk-accent-hover); }
+html[data-theme="dark"] body.page-boxed { background-color: var(--bk-bg) !important; }
+html[data-theme="dark"] body.page-boxed:before { background-color: var(--bk-bg) !important; }
+
+/* Login: lasciamo il form default (background --bk-surface come in light).
+ * Restano gli enforcement sopra per:
+ *   - #sign-wrapper form bg → --bk-surface
+ *   - .sign-header / .sign-text → --bk-surface
+ *   - .sign-body / input → coperti
+ * In dark il box è coerente col tema, senza bordi inventati. */
+
+/* Bg row default (battere il `background-color: #fff` di Bootstrap su .table) */
+html[data-theme="dark"] .table { background-color: transparent !important; }
+html[data-theme="dark"] .panel > .table,
+html[data-theme="dark"] .panel > .panel-body > .table,
+html[data-theme="dark"] .panel > .table-responsive > .table { background-color: transparent !important; }
+
+/* Panel: nessun override in dark — il colore di classe resta identico al light
+ * (scelta utente: panel-default bianco, varianti state col loro accent). */
+
