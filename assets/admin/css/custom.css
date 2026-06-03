@@ -75,9 +75,11 @@
     text-transform: capitalize;
 }
 
-/* --- Tipografia di default --------------------------------------------- */
+/* --- Tipografia di default -----------------------------------------------
+ * I consumer cambiano il font impostando `--bk-font-family` in :root,
+ * senza dover riscrivere la regola `body`. */
 body {
-    font-family: Ubuntu, Poppins, sans-serif;
+    font-family: var(--bk-font-family, Ubuntu, Poppins, sans-serif);
 }
 
 /* --- Tab content: respiro -------------------------------------------- */

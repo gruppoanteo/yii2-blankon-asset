@@ -161,4 +161,14 @@
     /* --- Misc ------------------------------------------------------------- */
     --bk-scrollbar-thumb: rgba(0, 0, 0, 0.18);
     --bk-scrollbar-track: transparent;
+
+    /* --- Layout / typography (brand defaults, sovrascrivibili dai consumer)
+     * font-family: stack di default Anteo. I consumer cambiano semplicemente:
+     *     :root { --bk-font-family: 'Inter', system-ui, sans-serif; }
+     * sidebar-width: width hardcoded che vive nel layout.css del vendor.
+     * header-content-padding: padding del titolo pagina sotto al navbar. */
+    --bk-font-family:              Ubuntu, Poppins, sans-serif;
+    --bk-sidebar-width:            220px;
+    --bk-header-height:            50px;
+    --bk-header-content-padding:   18px 20px;
 }
