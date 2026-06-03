@@ -5,6 +5,16 @@ Tutte le modifiche notevoli a `anteo/yii2-blankon-asset`.
 Il formato segue [Keep a Changelog](https://keepachangelog.com/it/1.1.0/)
 e questo progetto aderisce a [SemVer](https://semver.org/lang/it/).
 
+## [2.1.1] — 2026-06-03
+
+### Changed
+- `admin/css/layout.css`: incorporate le brand customizations Anteo che fino
+  alla 2.1.0 vivevano nelle copie statiche dei consumer
+  (`web-appvision/backend/web/css/blankon_layout.css`). Tokens 2.1.0
+  riapplicati sopra. Net: 544 righe diff, -98 LOC.
+- I consumer che usavano una copia statica ora possono cancellarla
+  definitivamente (vedi nota di migrazione 2.1.0).
+
 ## [2.1.0] — 2026-06-03
 
 ### Added — layout caricato dal bundle + brand defaults tokenizzati
