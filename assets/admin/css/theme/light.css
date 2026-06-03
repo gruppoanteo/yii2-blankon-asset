@@ -1,0 +1,68 @@
+/* ============================================================================
+ * BLANKON THEME — LIGHT
+ * ----------------------------------------------------------------------------
+ * Mappa i design tokens ai colori "Blankon classic" attuali.
+ * Visivamente equivalente al rendering pre-2.0.0 (zero rotture).
+ * Per modificarli, lavora qui o nei file di brand del progetto.
+ * ========================================================================== */
+
+:root,
+html[data-theme="light"] {
+    /* Surfaces */
+    --bk-bg:            #f1f4f9;
+    --bk-surface:       #ffffff;
+    --bk-surface-2:     #ffffff;
+    --bk-surface-3:     #f5f7fa;
+    --bk-surface-alt:   #fbfbfb;
+
+    /* Sidebar left */
+    --bk-sidebar-bg:        #f5f5f5;
+    --bk-sidebar-fg:        #252525;
+    --bk-sidebar-muted:     #777777;
+    --bk-sidebar-hover-bg:  #e5e5e5;
+    --bk-sidebar-active-bg: #e5e5e5;
+    --bk-sidebar-active-fg: #2a2a2a;
+    --bk-sidebar-submenu-bg:#dfdfdf;
+    --bk-sidebar-icon-bg:   #d1d1d1;
+    --bk-sidebar-border:    #b6b6b6;
+
+    /* Header */
+    --bk-header-bg:    #ffffff;
+    --bk-header-fg:    #2a2a2a;
+    --bk-header-muted: #999999;
+    --bk-header-border:#dddddd;
+
+    /* Text */
+    --bk-text:        #2a2a2a;
+    --bk-text-muted:  #777777;
+    --bk-text-soft:   #999999;
+    --bk-text-strong: #1d2939;
+    --bk-text-invert: #ffffff;
+
+    /* Borders */
+    --bk-border:        #dddddd;
+    --bk-border-strong: #cccccc;
+    --bk-border-soft:   #eeeeee;
+    --bk-divider:       #e1e4e9;
+
+    /* Form */
+    --bk-input-disabled-bg: #eeeeee;
+
+    /* Modal overlay */
+    --bk-modal-overlay: rgba(0, 0, 0, 0.5);
+
+    /* Panel shadow */
+    --bk-panel-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.082);
+
+    /* Code */
+    --bk-code-bg: #f5f5f5;
+    --bk-code-fg: #c7254e;
+
+    /* Scrollbar */
+    --bk-scrollbar-thumb: rgba(0, 0, 0, 0.18);
+
+    /* Logo */
+    --bk-logo-url: url('/images/logo_login.png');
+
+    color-scheme: light;
+}
