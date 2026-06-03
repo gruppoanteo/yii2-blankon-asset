@@ -90,6 +90,30 @@
             }
         });
     }
+
+    // Swap del logo: ogni <img data-bk-logo-light="..." data-bk-logo-dark="...">
+    // viene aggiornato al cambio tema (e al bootstrap). Approccio JS è più
+    // robusto del CSS `content: url(...)` che non funziona su tutti i browser.
+    function effectiveTheme() {
+        var t = read();
+        if (t !== 'auto') return t;
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function swapLogos() {
+        var imgs = document.querySelectorAll('img[data-bk-logo-light]');
+        var eff = effectiveTheme();
+        for (var i = 0; i < imgs.length; i++) {
+            var img = imgs[i];
+            var src = eff === 'dark' ? img.getAttribute('data-bk-logo-dark') : img.getAttribute('data-bk-logo-light');
+            if (src && img.getAttribute('src') !== src) img.setAttribute('src', src);
+        }
+    }
+    document.addEventListener('bk:theme', swapLogos);
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', swapLogos);
+    } else {
+        swapLogos();
+    }
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', bind);
     } else {

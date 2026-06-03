@@ -20,8 +20,10 @@ html[data-theme="light"] {
     --bk-sidebar-fg:        #252525;
     --bk-sidebar-muted:     #777777;
     --bk-sidebar-hover-bg:  #e5e5e5;
-    --bk-sidebar-active-bg: #e5e5e5;
-    --bk-sidebar-active-fg: #2a2a2a;
+    /* active-bg: overlay accent semi-trasparente, stesso pattern del dark
+       per coerenza visiva. 12% per non essere troppo intenso sul light. */
+    --bk-sidebar-active-bg: rgba(0, 177, 225, 0.12);
+    --bk-sidebar-active-fg: #1d2939;
     --bk-sidebar-submenu-bg:#dfdfdf;
     --bk-sidebar-icon-bg:   #d1d1d1;
     --bk-sidebar-border:    #b6b6b6;

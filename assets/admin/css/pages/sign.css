@@ -14,7 +14,7 @@ body.page-boxed:before {
   content: "";
 }
 body.page-boxed #sign-wrapper {
-  background-color: #E9EAED;
+  background-color: var(--bk-bg);
 }
 body.page-boxed #sign-wrapper form {
   width: 350px;
@@ -42,7 +42,7 @@ body.page-boxed #sign-wrapper form {
   font-size: 13px;
 }
 #sign-wrapper form {
-  background-color: #FFFFFF;
+  background-color: var(--bk-surface);
 }
 #sign-wrapper form.rounded .sign-header {
   -webkit-border-top-left-radius: 3px;
@@ -91,17 +91,17 @@ body.page-boxed #sign-wrapper form {
 #sign-wrapper .form-group .input-group input[type=text], #sign-wrapper .form-group .input-group input[type=password], #sign-wrapper .form-group .input-group input[type=email] {
   box-shadow: none !important;
   border: none !important;
-  color: #B6B6B6;
+  color: var(--bk-text-muted);
 }
 #sign-wrapper .form-group .input-group i {
   font-size: 23px;
-  color: #B6B6B6;
+  color: var(--bk-text-muted);
 }
 #sign-wrapper .form-group .input-group-addon {
-  background-color: white;
+  background-color: var(--bk-surface);
 }
 #sign-wrapper .ckbox label {
-  color: #B6B6B6;
+  color: var(--bk-text-muted);
 }
 #sign-wrapper .brand {
   text-align: center;
@@ -132,7 +132,7 @@ body.page-boxed #sign-wrapper form {
 }
 
 .sign-body {
-  background-color: rgba(234, 234, 236, 0.72);
+  background-color: var(--bk-surface-alt);
   margin: 0px;
   padding: 15px 0px;
 }
@@ -173,7 +173,7 @@ body.page-boxed #sign-wrapper form {
 }
 
 .sign-text {
-  color: #777;
+  color: var(--bk-text-muted);
   display: block;
   font-size: 15px;
   text-transform: uppercase;

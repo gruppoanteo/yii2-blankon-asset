@@ -34,7 +34,9 @@ html[data-theme="dark"] {
     --bk-sidebar-fg:        #e6e8eb;
     --bk-sidebar-muted:     #9aa3ad;
     --bk-sidebar-hover-bg:  #232931;
-    --bk-sidebar-active-bg: #2a323d;
+    /* active-bg leggermente più tono accent rispetto al hover, per dare un
+       "pop" coerente col tema scuro (al posto del vecchio #3c3c3c piatto) */
+    --bk-sidebar-active-bg: rgba(0, 177, 225, 0.22);
     --bk-sidebar-active-fg: #ffffff;
     --bk-sidebar-submenu-bg:#13181e;
     --bk-sidebar-icon-bg:   #2a323d;
@@ -51,7 +53,10 @@ html[data-theme="dark"] {
     --bk-text-muted:  #9aa3ad;
     --bk-text-soft:   #6b7480;
     --bk-text-strong: #f4f6f8;
-    --bk-text-invert: #1a1f26;
+    /* text-invert resta bianco: serve per testo su componenti colorati
+       (badge, button accent, alert) dove vogliamo SEMPRE alto contrasto
+       contro il colore di stato, indipendentemente dal tema. */
+    --bk-text-invert: #ffffff;
 
     /* Borders */
     --bk-border:        #2c333d;
