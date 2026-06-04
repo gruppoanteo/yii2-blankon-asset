@@ -5,6 +5,15 @@ Tutte le modifiche notevoli a `anteo/yii2-blankon-asset`.
 Il formato segue [Keep a Changelog](https://keepachangelog.com/it/1.1.0/)
 e questo progetto aderisce a [SemVer](https://semver.org/lang/it/).
 
+## [2.1.2] — 2026-06-04
+
+### Added — DARK ENFORCEMENT esteso a Select2 "bootstrap"
+- `theme/coverage.css`: la copertura dark di Select2 (kartik) ora include la
+  variante `select2-container--bootstrap` accanto a `--default` / `--krajee`.
+  Coperti: `.select2-selection` (single/multiple), `__rendered`,
+  `__placeholder`, `__choice`, results option (selected/highlighted),
+  search field, arrow + box-shadow inset.
+
 ## [2.1.1] — 2026-06-03
 
 ### Changed
