@@ -244,6 +244,21 @@ label { color: var(--bk-label-fg); }
 }
 .tab-content { background-color: var(--bk-tab-active-bg); color: var(--bk-text); }
 
+/* kartik bootstrap-tabs-x (widget TabsX) — bordi struttura tokenizzati.
+ * Il plugin cabla #ddd su container `.tab-content` e separatori `.nav-tabs`
+ * delle varianti orientate; li mappiamo su --bk-tab-border cosi' seguono
+ * light/dark come i tab Bootstrap nativi. Per il dark vedi enforcement sotto
+ * (kartik usa #ddd con !important su hover/active). */
+.tabs-above.tab-bordered .tab-content,
+.tabs-below.tab-bordered .tab-content,
+.tabs-left.tab-bordered .tab-content,
+.tabs-right.tab-bordered .tab-content,
+.tabs-left .tab-content,
+.tabs-right .tab-content,
+.tabs-below > .nav-tabs,
+.tabs-left > .nav-tabs,
+.tabs-right > .nav-tabs { border-color: var(--bk-tab-border); }
+
 /* --- DROPDOWN / POPOVER --------------------------------------------------- */
 .dropdown-menu {
     background-color: var(--bk-dropdown-bg);
@@ -477,6 +492,50 @@ html[data-theme="dark"] .nav-tabs > li.active > a:focus { border-color: var(--bk
 html[data-theme="dark"] .nav-tabs > li.active > a,
 html[data-theme="dark"] .nav-tabs > li.active > a:hover,
 html[data-theme="dark"] .nav-tabs > li.active > a:focus { border-bottom-color: transparent !important; }
+
+/* TabsX (kartik bootstrap-tabs-x): il plugin cabla #ddd con !important su
+ * hover/active dei link e su container/separatori. Nel dark va forzato col
+ * token, mantenendo trasparente il lato di "aggancio" della tab attiva
+ * cosi' resta fusa col contenuto (come fa il blocco .nav-tabs qui sopra). */
+html[data-theme="dark"] .tabs-above.tab-bordered .tab-content,
+html[data-theme="dark"] .tabs-below.tab-bordered .tab-content,
+html[data-theme="dark"] .tabs-left.tab-bordered .tab-content,
+html[data-theme="dark"] .tabs-right.tab-bordered .tab-content,
+html[data-theme="dark"] .tabs-left .tab-content,
+html[data-theme="dark"] .tabs-right .tab-content,
+html[data-theme="dark"] .tabs-below > .nav-tabs,
+html[data-theme="dark"] .tabs-left > .nav-tabs,
+html[data-theme="dark"] .tabs-right > .nav-tabs { border-color: var(--bk-tab-border) !important; }
+
+html[data-theme="dark"] .tabs-above > .nav-tabs > li > a:hover,
+html[data-theme="dark"] .tabs-above > .nav-tabs > li.active > a,
+html[data-theme="dark"] .tabs-above > .nav-tabs > li.active > a:hover,
+html[data-theme="dark"] .tabs-above > .nav-tabs > li.active > a:focus,
+html[data-theme="dark"] .tabs-below > .nav-tabs > li > a:hover,
+html[data-theme="dark"] .tabs-below > .nav-tabs > li.active > a,
+html[data-theme="dark"] .tabs-below > .nav-tabs > li.active > a:hover,
+html[data-theme="dark"] .tabs-below > .nav-tabs > li.active > a:focus,
+html[data-theme="dark"] .tabs-left > .nav-tabs > li > a:hover,
+html[data-theme="dark"] .tabs-left > .nav-tabs > li.active > a,
+html[data-theme="dark"] .tabs-left > .nav-tabs > li.active > a:hover,
+html[data-theme="dark"] .tabs-left > .nav-tabs > li.active > a:focus,
+html[data-theme="dark"] .tabs-right > .nav-tabs > li > a:hover,
+html[data-theme="dark"] .tabs-right > .nav-tabs > li.active > a,
+html[data-theme="dark"] .tabs-right > .nav-tabs > li.active > a:hover,
+html[data-theme="dark"] .tabs-right > .nav-tabs > li.active > a:focus { border-color: var(--bk-tab-border) !important; }
+
+html[data-theme="dark"] .tabs-above > .nav-tabs > li.active > a,
+html[data-theme="dark"] .tabs-above > .nav-tabs > li.active > a:hover,
+html[data-theme="dark"] .tabs-above > .nav-tabs > li.active > a:focus { border-bottom-color: transparent !important; }
+html[data-theme="dark"] .tabs-below > .nav-tabs > li.active > a,
+html[data-theme="dark"] .tabs-below > .nav-tabs > li.active > a:hover,
+html[data-theme="dark"] .tabs-below > .nav-tabs > li.active > a:focus { border-top-color: transparent !important; }
+html[data-theme="dark"] .tabs-left > .nav-tabs > li.active > a,
+html[data-theme="dark"] .tabs-left > .nav-tabs > li.active > a:hover,
+html[data-theme="dark"] .tabs-left > .nav-tabs > li.active > a:focus { border-right-color: transparent !important; }
+html[data-theme="dark"] .tabs-right > .nav-tabs > li.active > a,
+html[data-theme="dark"] .tabs-right > .nav-tabs > li.active > a:hover,
+html[data-theme="dark"] .tabs-right > .nav-tabs > li.active > a:focus { border-left-color: transparent !important; }
 
 html[data-theme="dark"] .form-control,
 html[data-theme="dark"] .input-group-addon,
